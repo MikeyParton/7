@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Card from '../Card';
 import { Show } from '../../types';
 
-const Container = styled.div<{ open: boolean }>`
+const Root = styled.div<{ open: boolean }>`
   position: fixed;
   top: 0;
   bottom: 0;
@@ -22,6 +22,19 @@ const Container = styled.div<{ open: boolean }>`
   }
 `;
 
+const CardWrapper = styled.div`
+  width: 100%;
+
+  @media (min-width: 1224px) {
+    width: 66.66%;
+  }
+
+  @media (min-width: 1824px) {
+    width: 33.33%;
+  }
+`;
+
+
 interface IProps {
   show: Show | null,
   open: boolean,
@@ -34,9 +47,11 @@ function Sidebar({
   onClose}
 : IProps) {
   return (
-    <Container data-testid="sidebar" open={open}>
-      {show && <Card show={show} onClick={onClose} />}
-    </Container>
+    <Root data-testid="sidebar" open={open}>
+      <CardWrapper>
+        {show && <Card show={show} onClick={onClose} />}
+      </CardWrapper>
+    </Root>
   );
 }
 

@@ -32,7 +32,7 @@ const ShowList = styled.div`
   width: 100%;
   padding-left: 20px;
   padding-top: 20px;
-`
+`;
 
 const GridItem = styled.div`
   width: 100%;
@@ -54,7 +54,7 @@ const GridItem = styled.div`
 function App() {
   const [selectedShowOpen, setSelectedShowOpen] = useState(false);
   const [selectedShow, setSelectedShow] = useState<Show | null>(null);
-  const handleClickCard = (show: Show | null): void => {
+  const handleClickCard = (show: Show): void => {
     setSelectedShow(show);
     setSelectedShowOpen(Boolean(show));
   };
