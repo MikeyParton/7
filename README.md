@@ -1,44 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Demo
+https://mikeyparton.github.io/7/
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Considerations
+- Looking at the designs in the provided assets I thought that the uneven spacing between fixed width cards looked a bit awkward, so I implemented a standard grid with flexbox and responsive grid elements maintaining a 16:9 aspect ratio. This would have been easy to implement using grid, but at this browser support is still much better with flexbox.
+- I decided to use buttons as the root of the card elements because you get keyboard navigation for free.
+-  I chose to keep the state for the selectedShow & sidebarOpen seperate. This is probably the easiest way of keeping the show in the sidebar as it animates out. As the contents of the sidebar are not too expensive to keep in the DOM, I didn't see any reason to unmount it.
+- At the moment I keep the entire selected show object in state. This is ok for now since there is no way to update the show object. If the shows themselves were mutable, I would make sure to store the selected show id to ensure a single up to date source of truth.
+- The z-index and media query values I've used could be organised a bit better if the project was more involved or there was more time. Since we're using styled components, it would be nice to keep these in a theme to improve maintainability.
+- As a little bonus I also added a zoom effect on the image when you hover or focus on an a card.
+- The asset sizes are enormous! If I were going to deploy this to a real site, I would make sure the images are all optimised. 1.5mb for a 7 logo is excessive and would definitely hurt the performance of the page.
